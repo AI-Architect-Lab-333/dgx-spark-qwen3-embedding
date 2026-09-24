@@ -293,6 +293,19 @@ The six questions are not on this page. Replaying sections 2–4 and the vector 
 - **One GB10 box.** The two embedders are two dated measurements, not a leaderboard.
 - **Warnings left as printed:** the `n_batch` clamp and the `</s>` override. The server still returned a unit vector.
 
+## Self-check
+
+Eight questions. Each one is answered by a pitfall above. Write the answer down before you open [self-check-answers.md](self-check-answers.md).
+
+1. **Pitfall #1.** The first request to `/v1/embeddings` returns HTTP 500, `parse error`, last read `'{i'`. Is the GGUF bad? What do you change?
+2. **Pitfalls #2 and #3.** The log clamps `n_batch` from 2048 to 512, and it says control-looking token `128247` `'</s>'` will be overridden, calling that a bug in the model. Which of these, if either, is a reason to stop and pick another file?
+3. **Pitfall #4.** The server warns that CORS is `*` and that there is no API key. What was the access control actually used, and does this process listen on `:8002` after the next boot?
+4. **Pitfall #5.** Retrieval of the six controls is 6/6, and the absent term `k3s` scores 0.664 on `idle-llm-profiles`. Did the score notice that `k3s` is missing?
+5. **Pitfall #6.** At k = 10 the false note scores 0.675 and the true guide 0.674. Is the top document the true one? Was this the run that answered “Ollama”?
+6. **Pitfalls #7 and #8.** A completion is empty at `max_tokens=400`. A later pass at 2000 tokens writes `refusal_rate` instead of `silent`. Which index was that, and does a better retriever stop the invented name?
+7. **Pitfall #9.** A check required `teleport`. The completion contained `téléportée`. Whose failure is that?
+8. **Pitfall #10.** The false note is 8th, under three true chunks. A check that only requires the string `llama.cpp` passes. Why is that pass false, and which date does that completion belong to?
+
 ## Credits
 
 The weights are [Qwen/Qwen3-Embedding-0.6B-GGUF](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B-GGUF), license Apache-2.0. This run served `Qwen3-Embedding-0.6B-Q8_0.gguf` and passed `--pooling last`, which is the pooling that repository’s llama.cpp notes require. No text from that page is copied here. The query prefix in section 5 is the string stored with the index this box built.
