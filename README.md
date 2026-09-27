@@ -190,6 +190,8 @@ Symptom: 0.675 then 0.674. On 19 September, MiniLM, the same window at k = 10 ha
 
 ## 7. What generation already did on 19 September (MiniLM index, `:8000`)
 
+> **Different date, different index.** Everything in this section happened on 19 September, with the MiniLM index and the text model on `:8000`, four days before the Qwen embedder existed. It is here because it shows what a retriever cannot fix: once the right chunks are in the window, the generator can still invent a name, run out of budget, or follow a false chunk. If you only need the embedder, skip to section 8.
+
 These are limits of the chain. They are not Qwen measurements. The text model was the one already served on `:8000`.
 
 Retrieval alone that morning was **6/6** on 19 public guides (387 chunks, dimension 384). The five factual controls had the right guide first, scores from **0.545 to 0.703**. The absent-term control was pitfall #5 at **0.609**.
